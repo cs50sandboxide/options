@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options Scanner | Premium Yield Optimizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="pageLoader">
+        <div class="loader-line"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">OPTIONS SCANNER</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#scanner" class="nav-link">Scanner</a>
+                <a href="#results" class="nav-link">Results</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#how-it-works" class="mobile-menu-link">How It Works</a>
+        <a href="#scanner" class="mobile-menu-link">Scanner</a>
+        <a href="#results" class="mobile-menu-link">Results</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <span class="hero-eyebrow animate-fade-up" style="animation-delay: 0.5s">PREMIUM YIELD OPTIMIZER</span>
+            <h1 class="hero-title animate-fade-up" style="animation-delay: 0.7s">Options<br><em>Scanner</em></h1>
+            <p class="hero-subtitle animate-fade-up" style="animation-delay: 1.1s">Sell options with conviction. Scan thousands of contracts to find optimal strike prices, expirations, and premiums aligned with your thesis.</p>
+            <div class="hero-ctas animate-fade-up" style="animation-delay: 1.3s">
+                <a href="#scanner" class="cta-primary">Start Scanning</a>
+                <a href="#how-it-works" class="cta-outline">How It Works</a>
+            </div>
+        </div>
+        <div class="scroll-indicator animate-fade-up" style="animation-delay: 1.8s">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Methodology</span>
+                <h2 class="section-title">How It Works</h2>
+            </div>
+            <div class="how-grid">
+                <div class="how-card">
+                    <span class="how-number">01</span>
+                    <h3 class="how-card-title">Define Your Thesis</h3>
+                    <p class="how-card-desc">Enter your ticker, price target, timeline, and conviction level. The scanner adapts its entire strategy around your outlook.</p>
+                </div>
+                <div class="how-card">
+                    <span class="how-number">02</span>
+                    <h3 class="how-card-title">Set Risk Parameters</h3>
+                    <p class="how-card-desc">Calibrate your risk willingness, desired upside, position size, and assignment preferences. Every slider reshapes the scoring weights.</p>
+                </div>
+                <div class="how-card">
+                    <span class="how-number">03</span>
+                    <h3 class="how-card-title">Scan &amp; Score</h3>
+                    <p class="how-card-desc">The engine evaluates every strike and expiration across the entire options chain, computing Greeks, probabilities, and a composite score.</p>
+                </div>
+                <div class="how-card">
+                    <span class="how-number">04</span>
+                    <h3 class="how-card-title">Execute with Edge</h3>
+                    <p class="how-card-desc">Results are ranked by a weighted algorithm that balances premium yield, margin of safety, probability of profit, and forecast alignment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scanner Section -->
+    <section class="section section-dark" id="scanner">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Configure</span>
+                <h2 class="section-title">Scanner Parameters</h2>
+            </div>
+
+            <div class="scanner-layout">
+                <!-- Left Column: Inputs -->
+                <div class="scanner-form">
+                    <!-- Ticker -->
+                    <div class="form-group">
+                        <label class="form-label">Ticker Symbol</label>
+                        <div class="ticker-input-wrapper">
+                            <input type="text" id="ticker" class="form-input ticker-input" placeholder="e.g. AAPL" autocomplete="off" spellcheck="false">
+                            <button class="ticker-fetch-btn" id="fetchBtn" title="Fetch price">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.219-8.56"/><polyline points="21 3 21 9 15 9"/></svg>
+                            </button>
+                        </div>
+                        <div class="ticker-info" id="tickerInfo"></div>
+                    </div>
+
+                    <!-- Current Price (auto or manual) -->
+                    <div class="form-group">
+                        <label class="form-label">Current Price ($)</label>
+                        <input type="number" id="currentPrice" class="form-input" placeholder="Auto-fetched or enter manually" step="0.01" min="0">
+                    </div>
+
+                    <!-- Strategy Direction -->
+                    <div class="form-group">
+                        <label class="form-label">Conviction Direction</label>
+                        <div class="toggle-group" id="directionToggle">
+                            <button class="toggle-btn active" data-value="bullish">Bullish</button>
+                            <button class="toggle-btn" data-value="bearish">Bearish</button>
+                        </div>
+                    </div>
+
+                    <!-- Strategy Type -->
+                    <div class="form-group">
+                        <label class="form-label">Strategy</label>
+                        <div class="toggle-group" id="strategyToggle">
+                            <button class="toggle-btn active" data-value="sell_puts">Sell Puts</button>
+                            <button class="toggle-btn" data-value="sell_calls">Sell Calls</button>
+                            <button class="toggle-btn" data-value="both">Both</button>
+                        </div>
+                    </div>
+
+                    <!-- Target Price -->
+                    <div class="form-group">
+                        <label class="form-label">Price Target ($)</label>
+                        <input type="number" id="targetPrice" class="form-input" placeholder="Your price forecast" step="0.01" min="0">
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="form-group">
+                        <label class="form-label">Timeline <span class="label-value" id="timelineLabel">6 months</span></label>
+                        <input type="range" id="timeline" class="form-slider" min="1" max="24" value="6" step="1">
+                        <div class="slider-markers">
+                            <span>1m</span>
+                            <span>6m</span>
+                            <span>12m</span>
+                            <span>18m</span>
+                            <span>24m</span>
+                        </div>
+                    </div>
+
+                    <!-- Conviction Strength -->
+                    <div class="form-group">
+                        <label class="form-label">Conviction Strength <span class="label-value" id="convictionLabel">70%</span></label>
+                        <input type="range" id="conviction" class="form-slider" min="1" max="100" value="70" step="1">
+                        <div class="slider-markers">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+
+                    <!-- Position Size -->
+                    <div class="form-group">
+                        <label class="form-label">Current Holding (shares)</label>
+                        <input type="number" id="currentHolding" class="form-input" placeholder="Shares currently held" value="0" min="0" step="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Desired Holding if Assigned (shares)</label>
+                        <input type="number" id="desiredHolding" class="form-input" placeholder="e.g. 100, 200, 500" value="100" min="0" step="100">
+                    </div>
+
+                    <!-- Contracts to Sell -->
+                    <div class="form-group">
+                        <label class="form-label">Max Contracts to Sell</label>
+                        <input type="number" id="maxContracts" class="form-input" placeholder="e.g. 1, 5, 10" value="1" min="1" step="1">
+                    </div>
+
+                    <!-- Risk Willingness -->
+                    <div class="form-group">
+                        <label class="form-label">Risk Willingness <span class="label-value" id="riskLabel">50%</span></label>
+                        <input type="range" id="riskWillingness" class="form-slider" min="1" max="100" value="50" step="1">
+                        <div class="slider-markers">
+                            <span>Conservative</span>
+                            <span>Moderate</span>
+                            <span>Aggressive</span>
+                        </div>
+                    </div>
+
+                    <!-- Upside Desire -->
+                    <div class="form-group">
+                        <label class="form-label">Premium Desire <span class="label-value" id="upsideLabel">50%</span></label>
+                        <input type="range" id="upsideDesire" class="form-slider" min="1" max="100" value="50" step="1">
+                        <div class="slider-markers">
+                            <span>Safety First</span>
+                            <span>Balanced</span>
+                            <span>Max Premium</span>
+                        </div>
+                    </div>
+
+                    <!-- Min DTE -->
+                    <div class="form-group">
+                        <label class="form-label">Minimum DTE <span class="label-value" id="minDteLabel">7 days</span></label>
+                        <input type="range" id="minDte" class="form-slider" min="1" max="90" value="7" step="1">
+                    </div>
+
+                    <!-- Max DTE -->
+                    <div class="form-group">
+                        <label class="form-label">Maximum DTE <span class="label-value" id="maxDteLabel">180 days</span></label>
+                        <input type="range" id="maxDte" class="form-slider" min="7" max="730" value="180" step="1">
+                    </div>
+
+                    <!-- Risk-Free Rate -->
+                    <div class="form-group">
+                        <label class="form-label">Risk-Free Rate (%) <span class="label-value" id="rateLabel">4.5%</span></label>
+                        <input type="range" id="riskFreeRate" class="form-slider" min="0" max="10" value="4.5" step="0.1">
+                    </div>
+
+                    <!-- Scan Button -->
+                    <button class="cta-primary scan-btn" id="scanBtn">
+                        <span class="scan-btn-text">Scan Options Chain</span>
+                        <span class="scan-btn-loading" style="display:none">
+                            <span class="dot-pulse"></span>
+                            Scanning...
+                        </span>
+                    </button>
+
+                    <p class="form-note">Uses Yahoo Finance data via CORS proxy. If live data is unavailable, realistic simulated data is used based on Black-Scholes pricing.</p>
+                </div>
+
+                <!-- Right Column: Summary Panel -->
+                <div class="summary-panel" id="summaryPanel">
+                    <div class="summary-header">
+                        <span class="section-label">Live Preview</span>
+                        <h3 class="summary-title">Scan Summary</h3>
+                    </div>
+                    <div class="summary-stats">
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Ticker</span>
+                            <span class="summary-stat-value" id="sumTicker">—</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Direction</span>
+                            <span class="summary-stat-value" id="sumDirection">Bullish</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Strategy</span>
+                            <span class="summary-stat-value" id="sumStrategy">Sell Puts</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Current Price</span>
+                            <span class="summary-stat-value" id="sumPrice">—</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Target Price</span>
+                            <span class="summary-stat-value" id="sumTarget">—</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Target Move</span>
+                            <span class="summary-stat-value" id="sumMove">—</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Timeline</span>
+                            <span class="summary-stat-value" id="sumTimeline">6 months</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Conviction</span>
+                            <span class="summary-stat-value" id="sumConviction">70%</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Risk Profile</span>
+                            <span class="summary-stat-value" id="sumRisk">Moderate</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="summary-stat-label">Capital at Risk</span>
+                            <span class="summary-stat-value" id="sumCapital">—</span>
+                        </div>
+                    </div>
+                    <div class="weight-preview">
+                        <span class="section-label">Scoring Weights</span>
+                        <div class="weight-bars" id="weightBars">
+                            <div class="weight-bar-row">
+                                <span class="weight-bar-label">Premium Yield</span>
+                                <div class="weight-bar"><div class="weight-bar-fill" id="wPremium" style="width:30%"></div></div>
+                            </div>
+                            <div class="weight-bar-row">
+                                <span class="weight-bar-label">Safety Margin</span>
+                                <div class="weight-bar"><div class="weight-bar-fill" id="wSafety" style="width:25%"></div></div>
+                            </div>
+                            <div class="weight-bar-row">
+                                <span class="weight-bar-label">Prob. of Profit</span>
+                                <div class="weight-bar"><div class="weight-bar-fill" id="wProb" style="width:25%"></div></div>
+                            </div>
+                            <div class="weight-bar-row">
+                                <span class="weight-bar-label">Forecast Align</span>
+                                <div class="weight-bar"><div class="weight-bar-fill" id="wForecast" style="width:15%"></div></div>
+                            </div>
+                            <div class="weight-bar-row">
+                                <span class="weight-bar-label">Liquidity</span>
+                                <div class="weight-bar"><div class="weight-bar-fill" id="wLiquidity" style="width:10%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section" id="results" style="display:none">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Analysis</span>
+                <h2 class="section-title">Scan Results</h2>
+            </div>
+
+            <!-- Results Summary Cards -->
+            <div class="results-summary" id="resultsSummary">
+                <div class="result-stat-card">
+                    <span class="result-stat-label">Contracts Scanned</span>
+                    <span class="result-stat-value" id="resScanned">—</span>
+                </div>
+                <div class="result-stat-card">
+                    <span class="result-stat-label">Best Score</span>
+                    <span class="result-stat-value" id="resBestScore">—</span>
+                </div>
+                <div class="result-stat-card">
+                    <span class="result-stat-label">Best Annualized Yield</span>
+                    <span class="result-stat-value" id="resBestYield">—</span>
+                </div>
+                <div class="result-stat-card">
+                    <span class="result-stat-label">Avg Prob. of Profit</span>
+                    <span class="result-stat-value" id="resAvgPop">—</span>
+                </div>
+                <div class="result-stat-card">
+                    <span class="result-stat-label">Data Source</span>
+                    <span class="result-stat-value" id="resDataSource">—</span>
+                </div>
+            </div>
+
+            <!-- Top Pick Highlight -->
+            <div class="top-pick" id="topPick" style="display:none">
+                <div class="top-pick-header">
+                    <span class="top-pick-badge">TOP PICK</span>
+                    <h3 class="top-pick-title" id="topPickTitle">—</h3>
+                </div>
+                <div class="top-pick-stats" id="topPickStats"></div>
+                <p class="top-pick-rationale" id="topPickRationale"></p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="results-controls">
+                <div class="results-filter">
+                    <label class="form-label">Filter by Type</label>
+                    <div class="toggle-group toggle-group-sm" id="filterType">
+                        <button class="toggle-btn active" data-value="all">All</button>
+                        <button class="toggle-btn" data-value="put">Puts</button>
+                        <button class="toggle-btn" data-value="call">Calls</button>
+                    </div>
+                </div>
+                <div class="results-filter">
+                    <label class="form-label">Show Top</label>
+                    <select class="form-select" id="resultLimit">
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
+                        <option value="all">All</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Table -->
+            <div class="table-wrapper">
+                <table class="results-table" id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="rank">#</th>
+                            <th class="sortable" data-sort="type">Type</th>
+                            <th class="sortable" data-sort="strike">Strike</th>
+                            <th class="sortable" data-sort="dte">DTE</th>
+                            <th class="sortable" data-sort="expiry">Expiry</th>
+                            <th class="sortable" data-sort="bid">Bid</th>
+                            <th class="sortable" data-sort="ask">Ask</th>
+                            <th class="sortable" data-sort="mid">Mid</th>
+                            <th class="sortable" data-sort="annualYield">Ann. Yield</th>
+                            <th class="sortable" data-sort="pop">PoP</th>
+                            <th class="sortable" data-sort="safety">Safety</th>
+                            <th class="sortable" data-sort="delta">Delta</th>
+                            <th class="sortable" data-sort="theta">Theta</th>
+                            <th class="sortable" data-sort="iv">IV</th>
+                            <th class="sortable sorted-desc" data-sort="score">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Expanded Row Detail (hidden by default) -->
+            <div class="row-detail" id="rowDetail" style="display:none">
+                <div class="row-detail-header">
+                    <h3 id="detailTitle">Contract Details</h3>
+                    <button class="detail-close" id="detailClose">&times;</button>
+                </div>
+                <div class="row-detail-grid" id="detailGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-text">Options Scanner &mdash; Premium Yield Optimizer</span>
+            <span class="footer-text">For educational purposes only. Not financial advice.</span>
+        </div>
+    </footer>
+
+    <script src="js/engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
